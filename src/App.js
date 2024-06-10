@@ -64,7 +64,7 @@ function App(props) {
             align="center"
             className={classes.title}
           >
-            ISfnet HomePage
+            EKS DEMO
           </Typography>
           {new Date().toLocaleTimeString()}
         </Toolbar>
