@@ -3,7 +3,7 @@ import axios from 'axios';
 import { Card, CardContent, CardActions } from '@material-ui/core';
 import Grid from '@material-ui/core/Grid';
 import { Typography, Button } from '@material-ui/core';
-import './App.css'; // App.css를 임포트합니다.
+import '../App.css'; // App.css의 상대 경로를 수정합니다.
 
 function UpperPage() {
   const [data, setData] = useState({ outcome: [] });
@@ -14,6 +14,7 @@ function UpperPage() {
     const fetchData = async () => {
       try {
         const result = await axios(url);
+        console.log(result.data); // 데이터를 콘솔에 출력하여 확인합니다.
         setData(result.data);
       } catch (error) {
         console.error('Error fetching data:', error);
