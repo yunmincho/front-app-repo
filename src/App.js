@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import UpperPage from './page/UpperPage';
+import UpperPage from './page/UpperPage'
 import axios from 'axios';
 
 import { makeStyles } from '@material-ui/core/styles';
+
 import { AppBar, Toolbar, Typography } from '@material-ui/core';
 import { Button, IconButton } from '@material-ui/core';
 import CloudIcon from '@material-ui/icons/Cloud';
 import TextField from '@material-ui/core/TextField';
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -30,19 +32,16 @@ const useStyles = makeStyles((theme) => ({
   title: {
     flexGrow: 1,
   },
-  icon: {
-    width: '100px',
-    height: '100px',
-  },
 }));
 
 function App(props) {
   const classes = useStyles();
-  const [data, setState] = useState({ outcome: [] });
+  // const { sections } = props;
+  const [ data, setState ] = useState({outcome: []});
   const [query, setQuery] = useState('eks');
   const [search, setSearch] = useState('eks');
 
-  const url = `http://k8s-eksdemogroup-e0353f9ab7-808218605.ap-northeast-2.elb.amazonaws.com/contents/${search}`;
+  var url = `{backend-ingress ADDRESS}/contents/${search}`
 
   useEffect(() => {
     const fetchData = async () => {
@@ -50,8 +49,9 @@ function App(props) {
       setState(result.data);
     };
     fetchData();
-  }, [search, url]); // `url` 변수를 의존성 배열에 추가합니다.
-
+    // eslint-disable-next-line
+  }, [search]);
+  
   return (
     <div className={classes.root}>
       <AppBar position="static" style={{ background: '#2E3B55' }}>
@@ -59,38 +59,38 @@ function App(props) {
           <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
             <CloudIcon />
           </IconButton>
-          <Typography variant="h6" align="center" className={classes.title}>
-            Cloudong
+          <Typography
+            variant="h6"
+            align="center"
+            className={classes.title}
+          >
+            EKS DEMO Blog
           </Typography>
           {new Date().toLocaleTimeString()}
         </Toolbar>
       </AppBar>
-      <br />
+      <br/>
 
       <UpperPage key={1} />
-      <br />
-
+      <br/>
+      
       <form className={classes.searchRoot} noValidate autoComplete="off">
         <TextField
           id="standard-basic"
           label="Enter your keyword to search"
           type="text"
           value={query}
-          onChange={(event) => setQuery(event.target.value)}
+          onChange={event => setQuery(event.target.value)}
         />
         <Button onClick={() => setSearch(query)}> Click </Button>
       </form>
       <ul>
-        {data.outcome.map((item) => (
-          <li key={item.url}>
-            <a href={item.url}>{item.title}</a>
-            <br />
-          </li>
-        ))}
+      {data.outcome.map( item => (
+        <li key={item.url}>
+          <a href={item.url}>{item.title}</a><br/>
+        </li>
+      ))}
       </ul>
-      <div className="app-icons">
-        <img src={`${process.env.PUBLIC_URL}/AWS.ico`} alt="AWS Icon" className={classes.icon} />
-      </div>
     </div>
   );
 }

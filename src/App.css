@@ -36,16 +36,3 @@
     transform: rotate(360deg);
   }
 }
-
-
-/* AWS 아이콘 스타일링 */
-.app-icons {
-  display: flex;
-  justify-content: center;
-  margin-top: 20px;
-}
-
-.app-aws-icon {
-  width: 100px;
-  height: 100px;
-}
