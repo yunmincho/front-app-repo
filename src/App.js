@@ -9,7 +9,9 @@ import { AppBar, Toolbar, Typography } from '@material-ui/core';
 import { Button, IconButton } from '@material-ui/core';
 import CloudIcon from '@material-ui/icons/Cloud';
 import TextField from '@material-ui/core/TextField';
-import image from './Amazon Cloud9.png';
+
+// 이미지 import 제거
+// import image from './AmazonCloud9.png'; 
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -43,12 +45,12 @@ const useStyles = makeStyles((theme) => ({
 
 function App(props) {
   const classes = useStyles();
-  // const { sections } = props;
+  
   const [data, setState] = useState({ outcome: [] });
   const [query, setQuery] = useState('eks');
   const [search, setSearch] = useState('eks');
 
-  var url = `http://k8s-eksdemogroup-e0353f9ab7-808218605.ap-northeast-2.elb.amazonaws.com/contents/${search}`;
+  const url = `http://k8s-eksdemogroup-e0353f9ab7-808218605.ap-northeast-2.elb.amazonaws.com/contents/${search}`;
 
   useEffect(() => {
     const fetchData = async () => {
@@ -95,7 +97,7 @@ function App(props) {
           </li>
         ))}
       </ul>
-      <img src={image} alt="Amazon Cloud9" className={classes.image} /> {/* 이미지 사용 */}
+      <img src="/AmazonCloud9.png" alt="Amazon Cloud9" className={classes.image} /> {/* 이미지 사용 */}
     </div>
   );
 }
