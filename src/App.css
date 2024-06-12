@@ -37,22 +37,15 @@
   }
 }
 
-/* UpperPage styles */
-.upper-page-root {
+
+/* AWS 아이콘 스타일링 */
+.app-icons {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  overflow: hidden;
-  padding: 16px;
+  justify-content: center;
+  margin-top: 20px;
 }
 
-.upper-page-card {
-  max-width: 275px;
-  margin: 16px;
-}
-
-.upper-page-media {
-  height: 120px;
-  display: block;
-  margin: 0 auto;
+.app-aws-icon {
+  width: 100px;
+  height: 100px;
 }

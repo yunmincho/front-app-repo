@@ -4,14 +4,10 @@ import UpperPage from './page/UpperPage';
 import axios from 'axios';
 
 import { makeStyles } from '@material-ui/core/styles';
-
 import { AppBar, Toolbar, Typography } from '@material-ui/core';
 import { Button, IconButton } from '@material-ui/core';
 import CloudIcon from '@material-ui/icons/Cloud';
 import TextField from '@material-ui/core/TextField';
-
-// 이미지 import 제거
-// import image from './AmazonCloud9.png'; 
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -34,18 +30,14 @@ const useStyles = makeStyles((theme) => ({
   title: {
     flexGrow: 1,
   },
-  image: {
-    width: '100%',
-    height: 'auto',
-    maxWidth: '600px',
-    margin: 'auto',
-    display: 'block',
+  icon: {
+    width: '100px',
+    height: '100px',
   },
 }));
 
 function App(props) {
   const classes = useStyles();
-  
   const [data, setState] = useState({ outcome: [] });
   const [query, setQuery] = useState('eks');
   const [search, setSearch] = useState('eks');
@@ -58,8 +50,7 @@ function App(props) {
       setState(result.data);
     };
     fetchData();
-    // eslint-disable-next-line
-  }, [search]);
+  }, [search, url]); // `url` 변수를 의존성 배열에 추가합니다.
 
   return (
     <div className={classes.root}>
@@ -97,7 +88,9 @@ function App(props) {
           </li>
         ))}
       </ul>
-      <img src="/AmazonCloud9.png" alt="Amazon Cloud9" className={classes.image} /> {/* 이미지 사용 */}
+      <div className="app-icons">
+        <img src={`${process.env.PUBLIC_URL}/AWS.ico`} alt="AWS Icon" className={classes.icon} />
+      </div>
     </div>
   );
 }
