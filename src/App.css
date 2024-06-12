@@ -36,3 +36,23 @@
     transform: rotate(360deg);
   }
 }
+
+/* UpperPage styles */
+.upper-page-root {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  overflow: hidden;
+  padding: 16px;
+}
+
+.upper-page-card {
+  max-width: 275px;
+  margin: 16px;
+}
+
+.upper-page-media {
+  height: 120px;
+  display: block;
+  margin: 0 auto;
+}
